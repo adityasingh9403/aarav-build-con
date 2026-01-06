@@ -52,7 +52,7 @@ function App() {
 
         {/* Floating WhatsApp Button for Indore Clients (Optional but Recommended) */}
         <a
-          href="https://wa.me/919876543210"
+          href="https://wa.me/919977267799"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all z-50 animate-bounce"
