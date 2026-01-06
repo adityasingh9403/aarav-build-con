@@ -26,13 +26,13 @@ const About = () => {
               Our Legacy & Expertise
             </h2>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Established in 2012, **Aarav Build Con** started with a vision to redefine the skyline of **Indore**. 
-              As leading **civil contractors in Vijay Nagar**, we have successfully completed 150+ projects, 
+              Established in 2012, <b>Aarav Build Con</b> started with a vision to redefine the skyline of <b>Indore</b>. 
+              As leading <b>civil contractors in Vijay Nagar</b>, we have successfully completed 150+ projects, 
               ranging from luxury independent villas to sprawling commercial complexes.
             </p>
             <p className="text-gray-600">
-              Our team consists of highly skilled **architects, structural engineers, and project managers** who ensure that every brick laid meets global safety and quality standards. We specialize in 
-              **turnkey construction solutions**, providing everything from floor planning and 3D design 
+              Our team consists of highly skilled <b>architects, structural engineers, and project managers</b> who ensure that every brick laid meets global safety and quality standards. We specialize in 
+              <b>turnkey construction solutions</b>, providing everything from floor planning and 3D design 
               to final interior execution and handover.
             </p>
             
@@ -123,8 +123,8 @@ const About = () => {
           <Globe className="mx-auto text-yellow-500 mb-6" size={48} />
           <h2 className="text-3xl font-bold mb-6 italic">Committed to Developing Indore</h2>
           <p className="text-gray-400 text-lg">
-            Our leadership team brings together decades of experience in **Urban Planning and Real Estate**. 
-            From the bustling streets of **Bhawarkua** to the modern hubs of **Super Corridor**, 
+            Our leadership team brings together decades of experience in <b>Urban Planning and Real Estate</b>. 
+            From the bustling streets of <b>Bhawarkua</b> to the modern hubs of <b>Super Corridor</b>, 
             Aarav Build Con is committed to the development of Indore as a Smart City.
           </p>
         </div>
