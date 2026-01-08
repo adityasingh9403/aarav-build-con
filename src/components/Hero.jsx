@@ -1,96 +1,114 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Building2, Hammer, HardHat } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <div className="relative h-screen flex items-center justify-center overflow-hidden bg-[#0f172a]">
+    <div className="relative min-h-[90vh] bg-slate-50 flex items-center justify-center overflow-hidden">
       
-      {/* 1. Enhanced Background with Dark Gradient Overlay */}
-      <div className="absolute inset-0">
-        <img 
-          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80" 
-          alt="Aarav Build Con Indore" 
-          className="w-full h-full object-cover scale-105"
-        />
-        {/* Modern Multi-layer Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/90 via-[#0f172a]/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-transparent to-transparent" />
-      </div>
+      {/* 1. Industrial Accent - Yellow Bar (Left Side) */}
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-start text-left">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center py-16">
         
-        {/* 2. Floating Badge Animation */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="bg-yellow-500 text-[#0f172a] px-4 py-1 rounded-sm font-black text-xs uppercase tracking-[0.3em] mb-6"
-        >
-          Since 2012 • Indore
-        </motion.div>
+        {/* Left Side: Text Content (Occupies 7 columns) */}
+        <div className="lg:col-span-7 order-2 lg:order-1">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="inline-flex items-center gap-2 bg-[#0f172a] text-[#f59e0b] px-4 py-2 rounded-sm mb-8"
+          >
+            <HardHat size={16} />
+            <span className="font-black tracking-[0.2em] text-[10px] md:text-xs uppercase">
+              Verma Construction Group Indore
+            </span>
+          </motion.div>
 
-        {/* 3. Main Heading with Slide-up Animation */}
-        <motion.h1 
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-5xl md:text-8xl font-black text-white mb-6 leading-[1.1]"
-        >
-          Engineering <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-            Greatness.
-          </span>
-        </motion.h1>
-        
-        {/* 4. Subtext with permanent gentle floating animation */}
-        <motion.p 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ 
-            y: [0, -5, 0], // Permanent floating effect
-            opacity: 1 
-          }}
-          transition={{ 
-            duration: 0.8, 
-            delay: 0.3,
-            y: { duration: 4, repeat: Infinity, ease: "easeInOut" } // Infinite float
-          }}
-          className="text-lg md:text-xl text-gray-300 mb-10 max-w-xl leading-relaxed border-l-2 border-yellow-500 pl-6"
-        >
-          Aarav Build Con transforms blueprints into landmarks. From luxury villas to industrial hubs, we build the future of Indore.
-        </motion.p>
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-5xl md:text-7xl lg:text-8xl font-black text-[#0f172a] leading-[0.95] mb-8 tracking-tighter"
+          >
+            WE BUILD <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f59e0b] to-[#d97706]">
+              STRENGTH.
+            </span>
+          </motion.h1>
 
-        {/* 5. Buttons with Hover Scale Effects */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="flex flex-wrap gap-5"
-        >
-          <button className="group relative bg-yellow-500 text-[#0f172a] font-black px-10 py-5 rounded-sm overflow-hidden transition-all hover:bg-yellow-400">
-            <span className="relative z-10 flex items-center gap-2">VIEW PROJECTS</span>
-            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          </button>
-          
-          <button className="border-2 border-white/30 text-white font-bold px-10 py-5 rounded-sm backdrop-blur-sm hover:bg-white hover:text-[#0f172a] transition-all duration-300">
-            OUR SERVICES
-          </button>
-        </motion.div>
-      </div>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-lg md:text-xl text-slate-600 mb-10 max-w-xl leading-relaxed font-medium border-l-4 border-slate-200 pl-6"
+          >
+            Experience the pinnacle of civil engineering. From luxury high-rises to robust industrial structures, 
+            <span className="text-[#0f172a] font-bold"> Verma Construction </span> delivers excellence without compromise.
+          </motion.p>
 
-      {/* 6. Permanent Scroll Indicator Animation */}
-      <motion.div 
-        animate={{ y: [0, 15, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 flex flex-col items-center gap-2"
-      >
-        <span className="text-[10px] tracking-widest uppercase font-bold">Scroll</span>
-        <ChevronDown size={20} />
-      </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
+          >
+            <button className="w-full sm:w-auto bg-[#0f172a] text-white px-10 py-5 font-black flex items-center justify-center gap-3 hover:bg-[#f59e0b] hover:text-[#0f172a] transition-all duration-300 shadow-xl group">
+              OUR PORTFOLIO 
+              <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+            </button>
+            
+            <div className="flex items-center gap-4">
+               <div className="h-12 w-[2px] bg-slate-300 hidden sm:block" />
+               <div className="flex -space-x-3">
+                  <div className="w-10 h-10 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center"><Building2 size={16}/></div>
+                  <div className="w-10 h-10 rounded-full bg-slate-300 border-2 border-white flex items-center justify-center"><Hammer size={16}/></div>
+               </div>
+               <p className="text-sm font-bold text-slate-700">500+ Projects Completed</p>
+            </div>
+          </motion.div>
+        </div>
 
-      {/* 7. Animated Background Particles (Visual Detail) */}
-      <div className="absolute top-0 right-0 w-1/3 h-full overflow-hidden opacity-20 pointer-events-none">
-        <div className="absolute top-1/4 right-10 w-64 h-64 bg-yellow-500 rounded-full blur-[120px] animate-pulse" />
+        {/* Right Side: Image Section (Occupies 5 columns) */}
+        <div className="lg:col-span-5 order-1 lg:order-2">
+          <div className="relative">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative z-10"
+            >
+              {/* High Quality Hero Image */}
+              <img 
+                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800" 
+                alt="Modern Architecture Verma Construction" 
+                className="w-full h-[450px] lg:h-[600px] object-cover rounded-sm shadow-2xl grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
+              />
+              
+              {/* Stats Overlay */}
+              <div className="absolute -top-6 -left-6 bg-[#f59e0b] text-[#0f172a] p-6 shadow-xl hidden xl:block">
+                <p className="text-4xl font-black">25+</p>
+                <p className="text-[10px] font-black uppercase tracking-widest">Years of Trust</p>
+              </div>
+
+              {/* Quality Badge Overlay */}
+              <motion.div 
+                animate={{ y: [0, -15, 0] }}
+                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+                className="absolute -bottom-10 -right-6 bg-white p-8 shadow-2xl hidden md:flex items-center gap-5 border-b-8 border-[#0f172a]"
+              >
+                <div className="bg-slate-100 p-3 rounded-full">
+                  <ShieldCheck className="text-[#f59e0b]" size={32} />
+                </div>
+                <div>
+                  <p className="font-black text-xl text-[#0f172a]">ISO 9001:2015</p>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase">Quality Management Certified</p>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Decorative Background Elements */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] border-[20px] border-[#0f172a]/5 z-0 pointer-events-none" />
+          </div>
+        </div>
       </div>
     </div>
   );

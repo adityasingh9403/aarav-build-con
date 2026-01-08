@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Expand, Building } from 'lucide-react';
+import { MapPin, Expand, Building2, ArrowUpRight, Filter, LayoutGrid } from 'lucide-react';
 
 const projectsData = [
-  { id: 1, title: "Aarav Residency", location: "Vijay Nagar, Indore", status: "Completed", area: "25,000 sq.ft", type: "Residential", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600" },
-  { id: 2, title: "Skyline Heights", location: "Bicholi Mardana, Indore", status: "Ongoing", area: "50,000 sq.ft", type: "Commercial", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600" },
-  { id: 3, title: "Business Park", location: "Bhawarkua, Indore", status: "Completed", area: "15,000 sq.ft", type: "Office", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600" },
-  { id: 4, title: "Elite Villas", location: "Rau, Indore", status: "Ongoing", area: "12,000 sq.ft", type: "Luxury Villa", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600" },
-  { id: 5, title: "Smart IT Hub", location: "Super Corridor, Indore", status: "Completed", area: "1,20,000 sq.ft", type: "IT Park", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600" },
+  { id: 1, title: "Verma Residency", location: "Vijay Nagar, Indore", status: "Completed", area: "25,000 sq.ft", type: "Residential", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600" },
+  { id: 2, title: "Verma Skyline", location: "Bicholi Mardana, Indore", status: "Ongoing", area: "50,000 sq.ft", type: "Commercial", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600" },
+  { id: 3, title: "Industrial Hub", location: "Pithampur, MP", status: "Completed", area: "85,000 sq.ft", type: "Industrial", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600" },
+  { id: 4, title: "Luxury Estate", location: "Rau Bypass, Indore", status: "Ongoing", area: "12,000 sq.ft", type: "Premium Villa", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600" },
+  { id: 5, title: "Modern Tech Park", location: "Super Corridor, Indore", status: "Completed", area: "1,20,000 sq.ft", type: "IT Sector", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600" },
 ];
 
 const Projects = () => {
@@ -17,101 +17,169 @@ const Projects = () => {
     ? projectsData 
     : projectsData.filter(p => p.status === filter);
 
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { duration: 0.6, ease: "easeOut" }
+    },
+    exit: { 
+      opacity: 0, 
+      scale: 0.9, 
+      transition: { duration: 0.3 } 
+    }
+  };
+
   return (
-    <div className="pt-32 pb-20 px-4 bg-[#f8fafc] min-h-screen">
+    <div className="pt-32 pb-20 px-6 bg-[#fcfcfc] min-h-screen overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        {/* Section Header with Reveal Animation */}
+        <div className="relative mb-20">
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ width: 0 }}
+            whileInView={{ width: "100px" }}
+            className="h-2 bg-[#f59e0b] mb-6"
+          />
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="space-y-2"
+            transition={{ duration: 0.8 }}
+            className="space-y-4"
           >
-            <h6 className="text-yellow-600 font-bold tracking-[0.3em] uppercase text-sm">Our Portfolio</h6>
-            <h1 className="text-5xl font-black text-[#0f172a] tracking-tighter italic">Building <span className="text-yellow-500">Masterpieces</span></h1>
+            <h6 className="text-[#f59e0b] font-black uppercase tracking-[0.5em] text-xs">Our Portfolio</h6>
+            <h1 className="text-6xl md:text-8xl font-black text-[#0f172a] uppercase tracking-tighter leading-none">
+              THE <span className="text-transparent" style={{ WebkitTextStroke: '2px #0f172a' }}>VERMA</span> <br /> 
+              ARCHIVES
+            </h1>
           </motion.div>
-
-          {/* Improved Filter Buttons */}
-          <div className="flex flex-wrap gap-3 bg-white p-2 rounded-xl shadow-sm border border-gray-100">
-            {['All', 'Ongoing', 'Completed'].map((tab) => (
-              <button 
-                key={tab}
-                onClick={() => setFilter(tab)}
-                className={`px-8 py-3 rounded-lg font-bold transition-all duration-300 ${
-                  filter === tab 
-                  ? 'bg-[#0f172a] text-white shadow-lg scale-105' 
-                  : 'text-gray-500 hover:bg-gray-100'
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
+          {/* Decorative Background Text */}
+          <div className="absolute top-0 right-0 text-[10rem] font-black text-slate-100 opacity-20 pointer-events-none select-none translate-x-20 -translate-y-10 hidden lg:block">
+            BUILDS
           </div>
         </div>
 
-        {/* Projects Grid with AnimatePresence */}
+        {/* Professional Animated Filter Bar */}
         <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="flex flex-col md:flex-row items-center justify-between mb-16 gap-8 border-y-2 border-[#0f172a]/5 py-8"
+        >
+          <div className="flex items-center gap-4">
+             <div className="p-3 bg-[#0f172a] text-[#f59e0b] rounded-full">
+                <Filter size={20} />
+             </div>
+             <span className="font-black text-[#0f172a] uppercase text-sm tracking-[0.2em]">Project Stage</span>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            {['All', 'Ongoing', 'Completed'].map((tab) => (
+              <motion.button 
+                key={tab}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setFilter(tab)}
+                className={`relative px-12 py-3 text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${
+                  filter === tab 
+                  ? 'text-white' 
+                  : 'text-gray-400 hover:text-[#0f172a]'
+                }`}
+              >
+                {filter === tab && (
+                  <motion.div 
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-[#0f172a] z-0"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-10">{tab}</span>
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Animated Projects Grid */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+          className="grid grid-cols-1 md:grid-cols-2 gap-10"
         >
           <AnimatePresence mode='popLayout'>
             {filteredProjects.map((project) => (
               <motion.div 
                 layout
+                variants={cardVariants}
                 key={project.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-                className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100"
+                className="group relative bg-white flex flex-col sm:flex-row overflow-hidden border border-slate-100 shadow-sm hover:shadow-[0_40px_80px_-15px_rgba(15,23,42,0.15)] transition-all duration-500"
               >
-                {/* Image Section */}
-                <div className="relative h-72 overflow-hidden">
-                  <img 
+                {/* Image Section with Zoom Effect */}
+                <div className="relative w-full sm:w-[45%] h-72 sm:h-auto overflow-hidden">
+                  <motion.img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                    className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 grayscale-[0.5] group-hover:grayscale-0" 
                   />
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest text-[#0f172a] shadow-sm">
+                  {/* Floating Status Tag */}
+                  <div className={`absolute top-0 left-0 px-6 py-2 font-black text-[9px] uppercase tracking-[0.2em] shadow-lg ${
+                    project.status === 'Completed' ? 'bg-[#f59e0b] text-[#0f172a]' : 'bg-[#0f172a] text-white'
+                  }`}>
                     {project.status}
                   </div>
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-[#0f172a]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <button className="bg-yellow-500 text-[#0f172a] font-bold px-6 py-2 rounded-full transform -translate-y-4 group-hover:translate-y-0 transition-transform">
-                      View Details
-                    </button>
-                  </div>
+                  {/* Overlay on Hover */}
+                  <div className="absolute inset-0 bg-[#0f172a]/20 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
 
                 {/* Content Section */}
-                <div className="p-8 space-y-4">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-2xl font-bold text-[#0f172a] group-hover:text-yellow-600 transition-colors">
-                      {project.title}
-                    </h3>
-                    <div className="bg-yellow-50 p-2 rounded-lg text-yellow-600">
-                      <Building size={20} />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2 text-gray-500 text-sm">
-                    <MapPin size={16} className="text-yellow-500" />
-                    {project.location}
-                  </div>
-
-                  {/* Stats Divider */}
-                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-100">
-                    <div className="space-y-1">
-                      <p className="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Build Area</p>
-                      <div className="flex items-center gap-1 font-bold text-gray-700 italic">
-                         <Expand size={14} /> {project.area}
+                <div className="w-full sm:w-[55%] p-10 flex flex-col justify-between relative bg-white">
+                  <div className="space-y-6">
+                    <div className="flex justify-between items-start">
+                      <h3 className="text-3xl font-black text-[#0f172a] leading-none uppercase tracking-tighter group-hover:text-[#f59e0b] transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      <div className="p-2 border border-slate-100 rounded-full group-hover:bg-[#0f172a] group-hover:text-white transition-all duration-500 rotate-45 group-hover:rotate-0">
+                         <ArrowUpRight size={20} />
                       </div>
                     </div>
-                    <div className="space-y-1">
-                      <p className="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Project Type</p>
-                      <p className="font-bold text-gray-700 italic">{project.type}</p>
+                    
+                    <div className="flex items-center gap-2 text-slate-400 text-[10px] font-black uppercase tracking-widest">
+                      <MapPin size={14} className="text-[#f59e0b]" />
+                      {project.location}
                     </div>
+
+                    <p className="text-slate-500 text-sm font-semibold leading-relaxed line-clamp-2">
+                       A benchmark in structural engineering, delivering unmatched durability and aesthetics.
+                    </p>
+                  </div>
+
+                  {/* Technical Specs Footer */}
+                  <div className="mt-10 pt-8 border-t border-slate-50 grid grid-cols-2 gap-6">
+                    <div className="flex flex-col">
+                      <span className="text-[8px] text-slate-400 font-black uppercase tracking-[0.3em] mb-2">Total Scale</span>
+                      <span className="text-[#0f172a] font-black text-sm italic flex items-center gap-2">
+                        <Expand size={14} className="text-[#f59e0b]" /> {project.area}
+                      </span>
+                    </div>
+                    <div className="flex flex-col border-l border-slate-100 pl-6">
+                      <span className="text-[8px] text-slate-400 font-black uppercase tracking-[0.3em] mb-2">Structure</span>
+                      <span className="text-[#0f172a] font-black text-sm italic">{project.type}</span>
+                    </div>
+                  </div>
+
+                  {/* Vertical ID Bar */}
+                  <div className="absolute -right-2 top-1/2 -translate-y-1/2 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity">
+                    <span className="text-9xl font-black text-[#0f172a]">0{project.id}</span>
                   </div>
                 </div>
               </motion.div>
@@ -119,12 +187,35 @@ const Projects = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Empty State */}
+        {/* Empty Search State */}
         {filteredProjects.length === 0 && (
-          <div className="text-center py-20">
-            <h3 className="text-2xl text-gray-400">No projects found in this category.</h3>
-          </div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-40 border-2 border-dashed border-slate-100">
+             <LayoutGrid size={60} className="mx-auto text-slate-200 mb-6" />
+             <h3 className="text-2xl font-black text-slate-400 uppercase tracking-widest">No matching projects found</h3>
+          </motion.div>
         )}
+
+        {/* High-Impact Animated CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-32 relative group"
+        >
+          <div className="absolute -inset-1 bg-gradient-to-r from-[#f59e0b] to-[#0f172a] rounded-sm blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+          <div className="relative bg-white p-16 text-center border-t-8 border-[#0f172a]">
+            <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] mb-6 uppercase tracking-tighter">Your Landmark is Next.</h2>
+            <p className="text-slate-500 mb-12 font-bold uppercase tracking-widest text-sm">Join Indore's top-tier infrastructure family today.</p>
+            <motion.button 
+               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -10px rgba(15,23,42,0.3)" }}
+               whileTap={{ scale: 0.95 }}
+               className="bg-[#0f172a] text-white px-20 py-6 font-black uppercase tracking-widest text-lg transition-all"
+            >
+               Request Consultation
+            </motion.button>
+          </div>
+        </motion.div>
+
       </div>
     </div>
   );

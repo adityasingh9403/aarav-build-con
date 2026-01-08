@@ -1,132 +1,230 @@
 import React from 'react';
-import { ShieldCheck, Target, Eye, HardHat, Award, Globe } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ShieldCheck, Target, Eye, HardHat, Award, Globe, UserCheck, Sparkles, Quote, ArrowUpRight } from 'lucide-react';
 
 const About = () => {
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
+  };
+
   return (
-    <div className="pt-20 bg-white">
-      {/* 1. SEO Header Section */}
-      <section className="bg-[#0f172a] py-24 text-white">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tight">
-            Best Construction Company in <span className="text-yellow-500">Indore</span>
+    <div className="pt-20 bg-white overflow-hidden">
+      
+      {/* 1. Dynamic SEO Header Section */}
+      <section className="bg-[#0f172a] py-32 md:py-48 text-white relative">
+        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: `url('https://www.transparenttextures.com/patterns/carbon-fibre.png')` }} />
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="max-w-7xl mx-auto px-6 text-center relative z-10"
+        >
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: "80px" }}
+            className="h-1 bg-[#f59e0b] mx-auto mb-8"
+          />
+          <h1 className="text-5xl md:text-8xl font-black mb-8 uppercase tracking-tighter leading-none">
+            ENGINEERING <br /> <span className="text-[#f59e0b]">TRUST</span> SINCE 1995
           </h1>
-          <p className="text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed">
-            Aarav Build Con is a premier name in the real estate and infrastructure industry of Madhya Pradesh. 
-            With over 12 years of excellence, we have been delivering high-quality residential, commercial, 
-            and civil engineering projects across Indore.
+          <p className="text-gray-400 max-w-3xl mx-auto text-xl md:text-2xl leading-relaxed font-medium italic">
+            "We don't just build structures; we architect the future of Central India."
           </p>
+        </motion.div>
+        
+        {/* Animated Background Text */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 text-[20rem] font-black text-white/[0.02] select-none pointer-events-none hidden lg:block">
+          ESTD
         </div>
       </section>
 
-      {/* 2. Detailed Company History (Keyword Rich) */}
-      <section className="py-20 max-w-7xl mx-auto px-4">
-        <div className="flex flex-col lg:flex-row gap-16 items-start">
-          <div className="lg:w-1/2 space-y-6">
-            <h2 className="text-3xl font-bold text-[#0f172a] border-b-4 border-yellow-500 inline-block pb-2">
-              Our Legacy & Expertise
-            </h2>
-            <p className="text-gray-700 text-lg leading-relaxed">
-              Established in 2012, <b>Aarav Build Con</b> started with a vision to redefine the skyline of <b>Indore</b>. 
-              As leading <b>civil contractors in Vijay Nagar</b>, we have successfully completed 150+ projects, 
-              ranging from luxury independent villas to sprawling commercial complexes.
+      {/* 2. Founder Section - Symmetric & Interactive */}
+      <section className="py-24 max-w-7xl mx-auto px-6">
+        <div className="flex flex-col lg:flex-row gap-20 items-center">
+          
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="w-full lg:w-1/2 flex justify-center lg:justify-start"
+          >
+            <div className="relative w-full max-w-[500px] aspect-square">
+              {/* Industrial Frame Animation */}
+              <motion.div 
+                initial={{ x: 0, y: 0 }}
+                whileInView={{ x: -20, y: 20 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="absolute inset-0 border-l-[15px] border-b-[15px] border-[#f59e0b] z-0"
+              ></motion.div>
+
+              <div className="relative z-10 w-full h-full overflow-hidden shadow-2xl bg-gray-100 group">
+                <img
+                  src="/rakesh_verma.jpg"
+                  className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-110"
+                  alt="Mr. Rakesh Verma - Founder"
+                />
+              </div>
+
+              {/* Floating Badge */}
+              <motion.div 
+                animate={{ y: [0, -15, 0] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className="absolute -top-6 -right-6 bg-[#0f172a] text-white p-6 md:p-10 shadow-2xl z-20 border-b-8 border-[#f59e0b]"
+              >
+                <p className="text-4xl md:text-6xl font-black text-[#f59e0b] leading-none">25+</p>
+                <p className="text-[10px] uppercase font-black tracking-[0.2em] mt-2">Years of Legacy</p>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="w-full lg:w-1/2 space-y-10"
+          >
+            <div className="space-y-4">
+              <h6 className="text-[#f59e0b] font-black uppercase tracking-[0.4em] text-sm">The Visionary</h6>
+              <h2 className="text-5xl md:text-7xl font-black text-[#0f172a] uppercase tracking-tighter leading-[0.9]">
+                MR. RAKESH <br /> VERMA
+              </h2>
+              <div className="w-24 h-3 bg-[#0f172a]"></div>
+            </div>
+
+            <div className="relative pt-6">
+              <Quote className="absolute -top-4 -left-8 text-slate-100" size={100} />
+              <p className="text-[#0f172a] text-xl md:text-2xl leading-relaxed font-bold italic relative z-10">
+                "Our foundation is built on integrity. We treat every blueprint as a promise to the families of Indore."
+              </p>
+            </div>
+
+            <p className="text-slate-500 text-lg leading-relaxed font-medium">
+              A pioneer in <b>Turnkey Civil Engineering</b>, Mr. Verma has revolutionized the 
+              <b>Indore Real Estate</b> market by integrating modern technology with Vastu principles. 
+              Under his guidance, we have delivered over 300+ landmarks across the state.
             </p>
-            <p className="text-gray-600">
-              Our team consists of highly skilled <b>architects, structural engineers, and project managers</b> who ensure that every brick laid meets global safety and quality standards. We specialize in 
-              <b>turnkey construction solutions</b>, providing everything from floor planning and 3D design 
-              to final interior execution and handover.
-            </p>
-            
-            {/* Trust Badges */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-              <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
-                <ShieldCheck className="text-yellow-600" />
-                <span className="font-bold text-sm">ISO Certified Quality</span>
-              </div>
-              <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
-                <HardHat className="text-yellow-600" />
-                <span className="font-bold text-sm">Strict Safety Protocols</span>
-              </div>
-            </div>
-          </div>
 
-          <div className="lg:w-1/2">
-            <img 
-              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800" 
-              className="rounded-3xl shadow-2xl object-cover h-[500px] w-full" 
-              alt="Aarav Build Con Construction Site Indore" 
-            />
-          </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-4 bg-slate-50 p-5 border-l-8 border-[#0f172a] shadow-sm">
+                <UserCheck className="text-[#f59e0b]" size={28} />
+                <span className="font-black text-[#0f172a] text-xs uppercase tracking-widest">ISO 9001:2015</span>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-4 bg-slate-50 p-5 border-l-8 border-[#f59e0b] shadow-sm">
+                <Sparkles className="text-[#0f172a]" size={28} />
+                <span className="font-black text-[#0f172a] text-xs uppercase tracking-widest">Global Standards</span>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* 3. Mission, Vision, Values (Long-form Content) */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-md transition">
-              <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mb-6 text-white">
-                <Target size={24} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-[#0f172a]">Our Mission</h3>
-              <p className="text-gray-600 leading-relaxed">
-                To provide affordable yet luxurious housing and commercial infrastructure in Indore by 
-                utilizing sustainable building materials and cutting-edge construction technology.
-              </p>
-            </div>
-
-            <div className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-md transition border-t-4 border-yellow-500">
-              <div className="w-12 h-12 bg-[#0f172a] rounded-full flex items-center justify-center mb-6 text-white">
-                <Eye size={24} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-[#0f172a]">Our Vision</h3>
-              <p className="text-gray-600 leading-relaxed">
-                To become the most trusted construction partner in Madhya Pradesh, known for 
-                uncompromising quality, timely delivery, and ethical business practices.
-              </p>
-            </div>
-
-            <div className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-md transition">
-              <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mb-6 text-white">
-                <Award size={24} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-[#0f172a]">Core Values</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Transparency, Integrity, and Innovation are the pillars of Aarav Build Con. 
-                We believe in long-term relationships with our clients and stakeholders.
-              </p>
-            </div>
-          </div>
+      {/* 3. Mission & Vision - 3D Tilt Cards */}
+      <section className="py-32 bg-slate-50 skew-y-2 translate-y-20">
+        <div className="max-w-7xl mx-auto px-6 -skew-y-2">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-10"
+          >
+            {[
+              { icon: <Target size={40} />, title: "Our Mission", desc: "To deliver RERA-certified, high-durability infrastructure that sets new benchmarks in the construction industry.", color: "bg-[#f59e0b]" },
+              { icon: <Eye size={40} />, title: "Our Vision", desc: "To become the undisputed leader in Civil Engineering in Central India by 2030 through sustainable innovation.", color: "bg-[#0f172a]" },
+              { icon: <Award size={40} />, title: "Our Values", desc: "Absolute transparency in pricing, uncompromising safety protocols, and a commitment to on-time delivery.", color: "bg-[#f59e0b]" }
+            ].map((box, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                whileHover={{ y: -20, rotateY: 10 }}
+                className="bg-white p-12 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border-b-[12px] border-[#0f172a] group transition-all"
+              >
+                <div className={`${box.color} text-white w-20 h-20 flex items-center justify-center mb-10 group-hover:scale-110 transition-transform`}>
+                  {box.icon}
+                </div>
+                <h3 className="text-3xl font-black mb-6 text-[#0f172a] uppercase tracking-tighter">{box.title}</h3>
+                <p className="text-slate-500 font-bold leading-relaxed text-lg">{box.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* 4. Why Choose Us (SEO Bullets) */}
-      <section className="py-20 max-w-7xl mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-[#0f172a] mb-12 uppercase tracking-widest italic">Why Choose Aarav Build Con?</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-           {[
-             { t: "RERA Registered", d: "All our residential projects in Indore are RERA approved." },
-             { t: "Vastu Compliant", d: "Expert consultation for Vastu-based home designs." },
-             { t: "Direct Supervision", d: "Engineers present on-site for daily quality checks." },
-             { t: "No Cost Overruns", d: "Transparent pricing with no hidden charges during execution." }
-           ].map((item, i) => (
-             <div key={i} className="text-left space-y-2 border-l-2 border-yellow-500 pl-4">
-               <h4 className="font-bold text-primary">{item.t}</h4>
-               <p className="text-sm text-gray-500">{item.d}</p>
-             </div>
-           ))}
+      {/* 4. The Verma Advantage - Staggered List */}
+      <section className="py-52 max-w-7xl mx-auto px-6">
+        <div className="text-center mb-20 space-y-4">
+          <h2 className="text-5xl md:text-7xl font-black text-[#0f172a] uppercase tracking-tighter">THE ADVANTAGE</h2>
+          <div className="w-20 h-2 bg-[#f59e0b] mx-auto"></div>
         </div>
+
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {[
+            { t: "RERA CERTIFIED", d: "100% legal transparency and government-approved documentation." },
+            { t: "VASTU EXPERTISE", d: "Ancient architectural science blended with modern civil designs." },
+            { t: "ZERO COST OVERRUNS", d: "Fixed budgets with no hidden charges during project execution." },
+            { t: "5-YEAR WARRANTY", d: "We stand by our strength. 5-year structural warranty on every villa." }
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              variants={fadeInUp}
+              className="text-left p-8 bg-white border-2 border-slate-100 hover:border-[#f59e0b] hover:shadow-2xl transition-all group"
+            >
+              <div className="flex justify-between items-start mb-6">
+                <div className="w-12 h-12 bg-slate-50 flex items-center justify-center group-hover:bg-[#0f172a] group-hover:text-white transition-colors">
+                  <ArrowUpRight size={20} />
+                </div>
+              </div>
+              <h4 className="font-black text-[#0f172a] uppercase text-sm tracking-widest mb-4 group-hover:text-[#f59e0b]">{item.t}</h4>
+              <p className="text-sm text-slate-500 font-bold leading-relaxed">{item.d}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </section>
 
-      {/* 5. Team / Leadership Intro (Local Trust) */}
-      <section className="py-20 bg-[#0f172a] text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <Globe className="mx-auto text-yellow-500 mb-6" size={48} />
-          <h2 className="text-3xl font-bold mb-6 italic">Committed to Developing Indore</h2>
-          <p className="text-gray-400 text-lg">
-            Our leadership team brings together decades of experience in <b>Urban Planning and Real Estate</b>. 
-            From the bustling streets of <b>Bhawarkua</b> to the modern hubs of <b>Super Corridor</b>, 
-            Aarav Build Con is committed to the development of Indore as a Smart City.
+      {/* 5. Parallax Global Trust Section */}
+      <section className="py-32 bg-[#0f172a] text-white relative">
+        <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: `url('https://www.transparenttextures.com/patterns/grid-me.png')` }} />
+        <div className="max-w-5xl mx-auto px-6 text-center relative z-10 space-y-12">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+          >
+            <Globe className="mx-auto text-[#f59e0b]" size={80} />
+          </motion.div>
+          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter italic">
+            DEVELOPING <br /> THE PRIDE OF <br /> <span className="text-[#f59e0b]">INDORE</span>
+          </h2>
+          <p className="text-gray-400 text-xl md:text-2xl font-medium leading-relaxed max-w-4xl mx-auto">
+            From the Super Corridor to the Bypass, we are the silent force behind Indore's Smart City transformation. 
+            Experience the <b>Verma Standard</b> of engineering.
           </p>
+          <motion.button 
+            whileHover={{ scale: 1.1, backgroundColor: "#ffffff", color: "#0f172a" }}
+            whileTap={{ scale: 0.9 }}
+            className="bg-[#f59e0b] text-[#0f172a] px-16 py-6 font-black uppercase text-xl shadow-[0_20px_50px_rgba(245,158,11,0.3)]"
+          >
+            Connect With Our Team
+          </motion.button>
+        </div>
+        
+        {/* Background Overlay */}
+        <div className="absolute bottom-0 right-0 text-[20rem] font-black text-white/[0.02] select-none pointer-events-none translate-y-20">
+          MP09
         </div>
       </section>
     </div>
