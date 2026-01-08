@@ -19,7 +19,7 @@ const Hero = () => {
           >
             <HardHat size={16} />
             <span className="font-black tracking-[0.2em] text-[10px] md:text-xs uppercase">
-              Verma Construction Group Indore
+              Verma Prime Properties Indore
             </span>
           </motion.div>
 
@@ -42,7 +42,7 @@ const Hero = () => {
             className="text-lg md:text-xl text-slate-600 mb-10 max-w-xl leading-relaxed font-medium border-l-4 border-slate-200 pl-6"
           >
             Experience the pinnacle of civil engineering. From luxury high-rises to robust industrial structures, 
-            <span className="text-[#0f172a] font-bold"> Verma Construction </span> delivers excellence without compromise.
+            <span className="text-[#0f172a] font-bold"> Verma Prime Properties </span> delivers excellence without compromise.
           </motion.p>
 
           <motion.div 
@@ -79,7 +79,7 @@ const Hero = () => {
               {/* High Quality Hero Image */}
               <img 
                 src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800" 
-                alt="Modern Architecture Verma Construction" 
+                alt="Modern Architecture Verma Prime Properties" 
                 className="w-full h-[450px] lg:h-[600px] object-cover rounded-sm shadow-2xl grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
               />
               

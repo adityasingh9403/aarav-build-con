@@ -76,7 +76,7 @@ const Home = () => {
                                 <span className="text-[#f59e0b] font-black uppercase tracking-[0.4em] text-xs">Our Legacy</span>
                             </div>
                             <h2 className="text-5xl md:text-7xl font-black text-[#0f172a] leading-[0.95] uppercase tracking-tighter">
-                                Verma Construction: <br />
+                                Verma Prime Properties: <br />
                                 <span className="text-transparent" style={{ WebkitTextStroke: '2px #0f172a' }}>Pioneering</span> <br />
                                 Engineering Excellence.
                             </h2>

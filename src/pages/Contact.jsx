@@ -158,7 +158,7 @@ const Contact = () => {
                         <div className="p-8 bg-slate-50 border-l-[10px] border-[#0f172a] flex items-start gap-4 shadow-sm">
                             <CheckCircle className="text-[#f59e0b] shrink-0" size={24} />
                             <p className="text-[#0f172a] font-bold text-sm leading-relaxed uppercase tracking-tight">
-                                Verma Construction ensures 100% data privacy. Your project details are secure with our structural vault.
+                                Verma Prime Properties ensures 100% data privacy. Your project details are secure with our structural vault.
                             </p>
                         </div>
                     </motion.div>

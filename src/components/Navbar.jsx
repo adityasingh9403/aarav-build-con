@@ -31,7 +31,7 @@ const Navbar = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-xl md:text-2xl font-black text-[#0f172a] leading-none tracking-tight">
-                  VERMA <span className="text-[#f59e0b]">CONSTRUCTION</span>
+                  VERMA <span className="text-[#f59e0b]">PRIME PROPERTIES</span>
                 </span>
                 <span className="text-[10px] font-bold text-[#64748b] uppercase tracking-[0.15em]">
                   Quality Construction & Interiors
@@ -53,7 +53,7 @@ const Navbar = () => {
             ))}
             
             <a 
-              href="tel:+91XXXXXXXXXX" 
+              href="tel:+919993816314" 
               className="bg-[#f59e0b] text-[#0f172a] px-6 py-2.5 rounded font-black flex items-center gap-2 hover:bg-[#0f172a] hover:text-white transition-all shadow-sm"
             >
               <Phone size={18} fill="currentColor" />
@@ -100,7 +100,7 @@ const Navbar = () => {
           ))}
           <div className="pt-6">
             <a 
-              href="tel:+91XXXXXXXXXX" 
+              href="tel:+919993816314" 
               className="w-full bg-[#f59e0b] text-[#0f172a] text-center py-4 rounded font-black text-xl block"
               onClick={() => setIsOpen(false)}
             >
